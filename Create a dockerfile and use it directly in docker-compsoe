@@ -1,0 +1,25 @@
+vim dockerfile:
+-----------------
+
+FROM jenkins/jenkins
+MAINTAINER intelliqit
+RUN apt-get update
+RUN apt-get install -y git
+
+now create docker-compose file
+
+
+version: '3.8'
+services:
+ jenkins:
+  build: .
+  ports:
+   - 7070:8080
+  container_name: jenkins
+
+ mytomcat:
+  image: tomee
+  ports:
+   - 6060:8080
+  container_name: mytomcat
+...
